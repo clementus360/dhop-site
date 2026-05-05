@@ -60,6 +60,83 @@ body {
   }
 }
 
+@keyframes reveal-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reveal-right {
+  0% {
+    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-tilt {
+  0% {
+    opacity: 0;
+    transform: rotate(-12deg) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.reveal.in-view {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+.reveal.in-view[data-anim="up"] {
+  animation-name: reveal-up;
+}
+.reveal.in-view[data-anim="scale"] {
+  animation-name: reveal-scale;
+}
+.reveal.in-view[data-anim="right"] {
+  animation-name: reveal-right;
+}
+.reveal.in-view[data-anim="tilt"] {
+  animation-name: reveal-tilt;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+  }
+  .reveal.in-view {
+    animation: none;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translate3d(0, 0, 0);

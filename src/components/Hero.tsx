@@ -3,7 +3,7 @@ import Image from "next/image";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand text-white">
-      <div className="mx-auto max-w-[1440px] px-10 pt-32 pb-0">
+      <div className="mx-auto max-w-[1440px] px-10 pt-40 pb-0">
         <div className="relative z-10 mx-auto max-w-[840px] text-center">
           <h1 className="font-display text-[64px] leading-[68px] tracking-tight text-balance">
             Watch It Made.
@@ -32,14 +32,14 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative mx-auto -mt-2 h-[340px] w-full max-w-[1440px] overflow-visible">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[480px] w-[480px] animate-pizza-enter">
+      <div className="relative mx-auto -mt-2 h-[280px] w-full max-w-[1440px] overflow-visible">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[640px] w-[640px] animate-pizza-enter">
           <Image
             src="/img/hero-pizza.webp"
             alt="Hand-tossed pepperoni pizza"
             fill
             priority
-            sizes="480px"
+            sizes="600px"
             className="object-contain"
           />
         </div>

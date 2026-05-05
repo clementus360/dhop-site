@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "./Reveal";
 
 export function WhyDhop() {
   return (
@@ -28,15 +29,19 @@ export function WhyDhop() {
           </BentoCard>
 
           <BentoCard className="lg:col-span-5" theme="brand">
-            <div className="pointer-events-none absolute -right-12 -top-16 h-[280px] w-[280px]">
+            <Reveal
+              anim="scale"
+              delay={120}
+              className="pointer-events-none absolute -right-12 -top-16 h-[280px] w-[280px]"
+            >
               <Image
-                src="/img/why/quality-toppings.webp"
+                src="/img/why/simple-ingredients.png"
                 alt="Supreme pizza"
                 fill
                 sizes="280px"
                 className="object-contain object-right-top"
               />
-            </div>
+            </Reveal>
             <BentoText
               title="Quality Toppings"
               body="Fresh vegetables, premium meats and cheeses create a delicious combination of flavors you can taste with every bite."
@@ -46,7 +51,11 @@ export function WhyDhop() {
 
           {/* Row 2 */}
           <BentoCard className="lg:col-span-5" theme="brand">
-            <div className="pointer-events-none absolute -right-10 -top-12 h-[260px] w-[320px]">
+            <Reveal
+              anim="right"
+              delay={80}
+              className="pointer-events-none absolute -right-20 -top-20 h-[260px] w-[320px]"
+            >
               <Image
                 src="/img/why/dough-makers.png"
                 alt="Pizza dough and ingredients"
@@ -54,7 +63,7 @@ export function WhyDhop() {
                 sizes="320px"
                 className="object-contain object-right-top"
               />
-            </div>
+            </Reveal>
             <BentoText
               title="Highly Trained pizza makers"
               body="Professional pizza makers with training and years of hands-on experience making pizzas. Plus fast and friendly service each and every time."
@@ -63,9 +72,15 @@ export function WhyDhop() {
           </BentoCard>
 
           <BentoCard className="lg:col-span-7" theme="light">
-            <div className="pointer-events-none absolute right-4 -top-10 h-[320px] w-[320px]">
-              <div className="absolute right-2 top-4 aspect-square w-[260px] rounded-full bg-brand" />
-              <div className="relative h-full w-full">
+            <div className="pointer-events-none absolute -right-4 -top-36 h-[520px] w-[800px]">
+              <Reveal
+                anim="scale"
+                delay={150}
+                className="absolute -right-8 top-32 aspect-square w-[320px] rounded-full bg-brand"
+              >
+                <span className="sr-only">decorative</span>
+              </Reveal>
+              <Reveal anim="up" delay={280} className="relative h-full w-full">
                 <Image
                   src="/img/why/atmosphere.png"
                   alt="DHOP pizza maker"
@@ -73,7 +88,7 @@ export function WhyDhop() {
                   sizes="320px"
                   className="object-contain object-right-bottom"
                 />
-              </div>
+              </Reveal>
             </div>
             <BentoText
               title="Vibrant and relaxed atmosphere"
@@ -90,22 +105,26 @@ function SimpleIngredientsArt() {
   return (
     <div className="pointer-events-none absolute -top-6 right-2 h-[240px] w-[260px]">
       {/* Tomato slices arranged in a small composition */}
-      <div className="absolute left-2 top-10 h-[120px] w-[120px]">
+      <Reveal anim="scale" delay={60} className="absolute left-2 top-10 h-[120px] w-[120px]">
         <Image src="/img/why/tomato.png" alt="" fill sizes="120px" className="object-contain" />
-      </div>
-      <div className="absolute right-4 top-2 h-[100px] w-[100px]">
+      </Reveal>
+      <Reveal anim="scale" delay={140} className="absolute right-4 top-2 h-[100px] w-[100px]">
         <Image src="/img/why/tomato.png" alt="" fill sizes="100px" className="object-contain" />
-      </div>
-      <div className="absolute right-0 bottom-0 h-[110px] w-[110px]">
+      </Reveal>
+      <Reveal anim="scale" delay={220} className="absolute right-0 bottom-0 h-[110px] w-[110px]">
         <Image src="/img/why/tomato.png" alt="" fill sizes="110px" className="object-contain" />
-      </div>
+      </Reveal>
       {/* Basil leaves on top */}
-      <div className="absolute left-12 top-2 h-[60px] w-[60px]">
+      <Reveal anim="tilt" delay={320} className="absolute left-12 top-2 h-[60px] w-[60px]">
         <Image src="/img/why/basil.png" alt="" fill sizes="60px" className="object-contain" />
-      </div>
-      <div className="absolute right-12 bottom-12 h-[55px] w-[55px] rotate-[-25deg]">
+      </Reveal>
+      <Reveal
+        anim="tilt"
+        delay={400}
+        className="absolute right-12 bottom-12 h-[55px] w-[55px] rotate-[-25deg]"
+      >
         <Image src="/img/why/basil.png" alt="" fill sizes="55px" className="object-contain" />
-      </div>
+      </Reveal>
     </div>
   );
 }

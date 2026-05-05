@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "./Reveal";
 
 export function Mission() {
   return (
@@ -30,8 +31,13 @@ export function Mission() {
         </div>
 
         <div className="relative h-[560px]">
-          <div className="absolute -right-24 top-1/2 aspect-square w-[120%] -translate-y-1/2 rounded-full bg-brand" />
-          <div className="absolute inset-0">
+          <Reveal
+            anim="scale"
+            className="absolute -right-24 top-1/2 aspect-square w-[120%] -translate-y-1/2 rounded-full bg-brand"
+          >
+            <span className="sr-only">decorative</span>
+          </Reveal>
+          <Reveal anim="up" delay={180} className="absolute inset-0">
             <Image
               src="/img/hero-pizza.webp"
               alt="Whole pepperoni pizza"
@@ -39,7 +45,7 @@ export function Mission() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-contain"
             />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
