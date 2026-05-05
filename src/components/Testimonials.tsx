@@ -42,8 +42,8 @@ const REVIEWS = [
 export function Testimonials() {
   return (
     <section className="bg-cream py-20">
-      <div className="mx-auto max-w-[1440px] px-10">
-        <h2 className="text-center font-display text-[40px] leading-[44px] text-ink">
+      <div className="mx-auto max-w-360 px-10">
+        <h2 className="text-center font-display text-[40px] leading-11 text-ink">
           What Customers Are <span className="text-brand">Saying</span>
         </h2>
 
@@ -55,7 +55,7 @@ export function Testimonials() {
             {REVIEWS.map((r) => (
               <article
                 key={r.name}
-                className="flex h-[260px] w-[420px] flex-col rounded-[12px] bg-white p-7 shadow-[0_2px_10px_rgba(26,37,47,0.07)] transition-shadow duration-300 hover:shadow-[0_8px_24px_rgba(26,37,47,0.12)]"
+                className="flex h-65 w-105 flex-col rounded-xl bg-white p-7 shadow-[0_2px_10px_rgba(26,37,47,0.07)] transition-shadow duration-300 hover:shadow-[0_8px_24px_rgba(26,37,47,0.12)]"
               >
                 <span aria-hidden className="font-display text-[54px] leading-none text-brand">
                   &ldquo;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
 type Anim = "up" | "scale" | "right" | "tilt";
 
@@ -17,7 +17,7 @@ export function Reveal({
   anim?: Anim;
   delay?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
   threshold?: number;
   once?: boolean;
 }) {
@@ -48,10 +48,9 @@ export function Reveal({
     return () => io.disconnect();
   }, [once, threshold]);
 
-  const Component = Tag as keyof JSX.IntrinsicElements;
+  const Component = Tag;
   return (
     <Component
-      // @ts-expect-error generic ref over polymorphic tag
       ref={ref}
       data-anim={anim}
       style={delay ? { animationDelay: `${delay}ms` } : undefined}

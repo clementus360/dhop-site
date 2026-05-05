@@ -30,12 +30,12 @@ export function Faq() {
 
   return (
     <section className="bg-night py-24">
-      <div className="mx-auto max-w-[1440px] px-10">
-        <h2 className="text-center font-display text-[40px] leading-[44px] text-white">
+      <div className="mx-auto max-w-360 px-10">
+        <h2 className="text-center font-display text-[40px] leading-11 text-white">
           Frequently Asked <span className="text-brand">Questions</span>
         </h2>
 
-        <div className="mx-auto mt-12 max-w-[876px] rounded-[12px] border border-brand/40 p-4 md:p-6">
+        <div className="mx-auto mt-12 max-w-219 rounded-xl border border-brand/40 p-4 md:p-6">
           <ul className="divide-y divide-white/10">
             {FAQ_ITEMS.map((item, i) => (
               <FaqRow
@@ -76,7 +76,7 @@ function FaqRow({
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex w-full items-center justify-between gap-6 rounded-md px-3 py-5 text-left transition-colors duration-200 hover:bg-white/[0.04] focus:bg-white/[0.04] focus:outline-none"
+        className="flex w-full items-center justify-between gap-6 rounded-md px-3 py-5 text-left transition-colors duration-200 hover:bg-white/4 focus:bg-white/4 focus:outline-none"
       >
         <div className="flex items-center gap-4">
           <span
@@ -110,7 +110,7 @@ function FaqRow({
         <div className="min-h-0">
           <p
             ref={panelRef}
-            className="max-w-[700px] px-3 pb-5 pt-1 text-[13px] leading-5 text-white/75"
+            className="max-w-175 px-3 pb-5 pt-1 text-[13px] leading-5 text-white/75"
             style={{ maxHeight: isOpen ? maxH || 200 : 0 }}
           >
             {answer}

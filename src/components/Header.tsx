@@ -30,7 +30,7 @@ export function Header() {
       }`}
     >
       <div
-        className={`mx-auto flex max-w-[1440px] items-center justify-between px-10 transition-all duration-300 ${
+        className={`mx-auto flex max-w-360 items-center justify-between px-10 transition-all duration-300 ${
           scrolled ? "h-20" : "h-32"
         }`}
       >

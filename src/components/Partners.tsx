@@ -14,8 +14,8 @@ const LOGOS = [
 export function Partners() {
   return (
     <section className="bg-white py-20">
-      <div className="mx-auto max-w-[1440px] px-10">
-        <h2 className="text-center font-display text-[40px] leading-[44px] text-ink">
+      <div className="mx-auto max-w-360 px-10">
+        <h2 className="text-center font-display text-[40px] leading-11 text-ink">
           Beers <span className="text-brand">·</span> Seltzers{" "}
           <span className="text-brand">·</span> Wines
         </h2>

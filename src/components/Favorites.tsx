@@ -26,8 +26,8 @@ const PIZZAS = [
 export function Favorites() {
   return (
     <section className="bg-white py-20">
-      <div className="mx-auto max-w-[1440px] px-10">
-        <h2 className="text-center font-display text-[40px] leading-[44px] text-ink">
+      <div className="mx-auto max-w-360 px-10">
+        <h2 className="text-center font-display text-[40px] leading-11 text-ink">
           Staff And Customer <span className="text-brand">Favorites</span>
         </h2>
 
@@ -43,7 +43,7 @@ export function Favorites() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
               </div>
-              <h3 className="mt-5 font-display text-[26px] leading-[30px] text-ink transition-colors duration-300 group-hover:text-brand">
+              <h3 className="mt-5 font-display text-[26px] leading-7.5 text-ink transition-colors duration-300 group-hover:text-brand">
                 {p.name}
               </h3>
               <p className="mt-2 text-sm leading-5 text-ink-soft">{p.description}</p>
