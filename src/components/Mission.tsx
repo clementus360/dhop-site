@@ -4,16 +4,16 @@ import { Reveal } from "./Reveal";
 export function Mission() {
   return (
     <section className="relative overflow-hidden bg-white py-20">
-      <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-12 px-20 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-360 grid-cols-1 items-center gap-12 px-20 lg:grid-cols-2">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">
             Our Mission Statement
           </p>
-          <h2 className="mt-4 font-display text-[60px] leading-[64px] text-ink">
+          <h2 className="mt-4 font-display text-[60px] leading-16 text-ink">
             Quality Ingredients, Pizza Making Skill, And Love Go{" "}
             <span className="text-brand">Into Every Pie.</span>
           </h2>
-          <div className="mt-8 max-w-[560px] space-y-4 text-[15px] leading-7 text-ink-soft">
+          <div className="mt-8 max-w-140 space-y-4 text-[15px] leading-7 text-ink-soft">
             <p>
               At DHOP, we believe great pizza comes from doing the basics
               right—every single time. Fresh dough made daily, quality ingredients sourced
@@ -30,7 +30,7 @@ export function Mission() {
           </div>
         </div>
 
-        <div className="relative h-[600px]">
+        <div className="relative h-150">
           {/* Red disc backdrop */}
           <Reveal
             anim="scale"
@@ -56,7 +56,7 @@ export function Mission() {
             delay={360}
             className="absolute right-2 top-2 h-32 w-32"
           >
-            <div className="h-full w-full rotate-[-12deg]">
+            <div className="h-full w-full -rotate-12">
               <Image
                 src="/img/brand/dhop-20-circle.webp"
                 alt="DHOP — 20 years"
@@ -89,7 +89,7 @@ export function Mission() {
             className="absolute right-2 bottom-6 flex items-center gap-3 rounded-full bg-white px-5 py-3 shadow-[0_16px_32px_rgba(0,0,0,0.16)] ring-1 ring-ink/5"
           >
             <span className="font-display text-[32px] leading-none text-brand">100%</span>
-            <span className="max-w-[112px] text-[11px] font-bold uppercase leading-tight tracking-wider text-ink">
+            <span className="max-w-28 text-[11px] font-bold uppercase leading-tight tracking-wider text-ink">
               Made In-House Daily
             </span>
           </Reveal>

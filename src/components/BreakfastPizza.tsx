@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 
 const SLICES = [
@@ -22,7 +25,89 @@ const SLICES = [
   },
 ];
 
+const AUTO_DEG_PER_MS = 360 / 45000;
+
+const angleAt = (x: number, y: number, cx: number, cy: number) =>
+  (Math.atan2(y - cy, x - cx) * 180) / Math.PI;
+
 export function BreakfastPizza() {
+  const pizzaRef = useRef<HTMLDivElement | null>(null);
+  const rotationRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const dragRef = useRef<{
+    centerX: number;
+    centerY: number;
+    startAngle: number;
+    startRotation: number;
+  } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  // Single RAF loop drives both auto-rotation and the rendered transform.
+  // Mutating rotationRef directly avoids a React re-render every frame.
+  useEffect(() => {
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    let last = performance.now();
+    const loop = (now: number) => {
+      const dt = now - last;
+      last = now;
+      if (!isDraggingRef.current && !reduced) {
+        rotationRef.current += dt * AUTO_DEG_PER_MS;
+      }
+      const node = pizzaRef.current;
+      if (node) {
+        node.style.transform = `rotate(${rotationRef.current}deg)`;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    const node = pizzaRef.current;
+    if (!node) return;
+    const rect = node.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    dragRef.current = {
+      centerX: cx,
+      centerY: cy,
+      startAngle: angleAt(e.clientX, e.clientY, cx, cy),
+      startRotation: rotationRef.current,
+    };
+    isDraggingRef.current = true;
+    setIsDragging(true);
+    try {
+      node.setPointerCapture(e.pointerId);
+    } catch {
+      /* capture may already be held */
+    }
+  }, []);
+
+  const onPointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag) return;
+    const a = angleAt(e.clientX, e.clientY, drag.centerX, drag.centerY);
+    rotationRef.current = drag.startRotation + (a - drag.startAngle);
+  }, []);
+
+  const endDrag = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    dragRef.current = null;
+    isDraggingRef.current = false;
+    setIsDragging(false);
+    const node = pizzaRef.current;
+    if (node) {
+      try {
+        node.releasePointerCapture(e.pointerId);
+      } catch {
+        /* not captured */
+      }
+    }
+  }, []);
+
   return (
     <section id="breakfast" className="relative overflow-hidden bg-night py-24 text-white">
       {/* Decorative red disc */}
@@ -39,13 +124,28 @@ export function BreakfastPizza() {
           <div className="relative lg:col-span-6">
             <div className="relative mx-auto aspect-square w-full max-w-130">
               <Reveal anim="tilt" delay={120} className="absolute inset-0">
-                <div className="pizza-rotate-slow relative h-full w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.45)]">
-                  <div className="absolute inset-0 [clip-path:inset(4%)]">
+                <div
+                  ref={pizzaRef}
+                  onPointerDown={onPointerDown}
+                  onPointerMove={onPointerMove}
+                  onPointerUp={endDrag}
+                  onPointerCancel={endDrag}
+                  role="slider"
+                  aria-label="Drag to rotate the pizza"
+                  aria-valuetext="Pizza rotation"
+                  tabIndex={0}
+                  style={{ touchAction: "none" }}
+                  className={`relative h-full w-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,0.45)] ${
+                    isDragging ? "cursor-grabbing" : "cursor-grab"
+                  }`}
+                >
+                  <div className="pointer-events-none absolute inset-0 [clip-path:inset(4%)]">
                     <Image
                       src="/img/hero-pizza.webp"
                       alt="Breakfast pizza fresh out of the oven"
                       fill
                       sizes="(max-width: 1024px) 90vw, 520px"
+                      draggable={false}
                       className="object-contain"
                     />
                   </div>
