@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 const NAV = [
   { label: "Menu", href: "#menu" },
+  { label: "Breakfast", href: "#breakfast" },
   { label: "The DHOP Way", href: "#dhop-way" },
   { label: "Catering", href: "#catering" },
   { label: "Merchandise", href: "#merch" },
@@ -34,14 +35,14 @@ export function Header() {
           scrolled ? "h-20" : "h-32"
         }`}
       >
-        <Link href="/" className="flex items-center" aria-label="DHOP — Downtown House of Pizza">
+        <Link href="/" className="flex items-center" aria-label="DHOP">
           <Image
             src="/img/brand/dhop-logo-white.png"
             alt="DHOP"
             width={140}
             height={120}
             priority
-            className={`w-auto transition-all duration-300 ${scrolled ? "h-14" : "h-20"}`}
+            className={`w-auto transition-all duration-300 ${scrolled ? "h-14" : "h-32"}`}
           />
         </Link>
 

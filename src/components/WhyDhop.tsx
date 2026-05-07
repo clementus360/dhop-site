@@ -3,18 +3,22 @@ import { Reveal } from "./Reveal";
 
 export function WhyDhop() {
   return (
-    <section className="bg-cream py-20">
+    <section id="dhop-way" className="bg-cream py-20">
       <div className="mx-auto max-w-360 px-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          <h2 className="font-display text-[64px] leading-16 text-ink text-balance">
-            Why Is Downtown House Of Pizza{" "}
-            <span className="text-brand">Fort Myers&apos; Favorite?</span>
-          </h2>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
+              The DHOP Way
+            </p>
+            <h2 className="mt-3 font-display text-[64px] leading-16 text-ink text-balance">
+              Why Is DHOP{" "}
+              <span className="text-brand">Fort Myers&apos; Favorite?</span>
+            </h2>
+          </div>
           <p className="self-center text-base leading-6 text-ink">
-            Downtown House of Pizza is a Fort Myers favorite because it keeps things simple
-            and consistent—fresh in-house dough, quality toppings, skilled pizza makers,
-            and a relaxed spot that works for a quick slice or a full meal with friends and
-            family.
+            DHOP is a Fort Myers favorite because it keeps things simple and
+            consistent—fresh in-house dough, quality toppings, skilled pizza makers, and a
+            relaxed spot that works for a quick slice or a full meal with friends and family.
           </p>
         </div>
 

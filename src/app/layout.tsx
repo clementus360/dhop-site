@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Downtown House of Pizza — Hand-tossed New York Style Pizza in Fort Myers",
+  title: "DHOP — Hand-tossed New York Style Pizza in Fort Myers",
   description:
-    "Watch it made. Taste the difference. Hand-tossed New York-style pizza, made fresh, no shortcuts. Located in the heart of Downtown Fort Myers.",
+    "Watch it made. Taste the difference. Hand-tossed New York-style pizza from DHOP, made fresh, no shortcuts. Located in the heart of Downtown Fort Myers.",
 };
 
 export default function RootLayout({

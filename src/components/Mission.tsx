@@ -15,7 +15,7 @@ export function Mission() {
           </h2>
           <div className="mt-8 max-w-[560px] space-y-4 text-[15px] leading-7 text-ink-soft">
             <p>
-              At Downtown House of Pizza, we believe great pizza comes from doing the basics
+              At DHOP, we believe great pizza comes from doing the basics
               right—every single time. Fresh dough made daily, quality ingredients sourced
               with care, and skilled hands that know what they&apos;re doing.
             </p>

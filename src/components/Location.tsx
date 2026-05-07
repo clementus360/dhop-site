@@ -15,7 +15,7 @@ export function Location() {
         </div>
         <div className="relative h-110 lg:col-span-8">
           <iframe
-            title="Map to Downtown House of Pizza"
+            title="Map to DHOP"
             src="https://www.google.com/maps?q=1520+Hendry+Street+Fort+Myers+FL+33901&output=embed"
             className="absolute inset-0 h-full w-full border-0"
             loading="lazy"

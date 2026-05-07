@@ -3,13 +3,13 @@ import { Marquee } from "./Marquee";
 const REVIEWS = [
   {
     quote:
-      "Last night was the first time that I had been to Downtown House of Pizza. I grabbed two slices of their Supreme, and it was excellent, very large slices. Great toppings and plenty of them. It was an enjoyable experience.",
+      "Last night was the first time that I had been to DHOP. I grabbed two slices of their Supreme, and it was excellent, very large slices. Great toppings and plenty of them. It was an enjoyable experience.",
     name: "Wayne T",
     source: "Google Review",
   },
   {
     quote:
-      "I visited Downtown House of Pizza on a whim and was pleasantly surprised by their crust—it was thin but held all the toppings perfectly. The atmosphere was cozy and welcoming, making it a great spot for a casual dinner.",
+      "I visited DHOP on a whim and was pleasantly surprised by their crust—it was thin but held all the toppings perfectly. The atmosphere was cozy and welcoming, making it a great spot for a casual dinner.",
     name: "Emily R",
     source: "Yelp Review",
   },
@@ -55,12 +55,12 @@ export function Testimonials() {
             {REVIEWS.map((r) => (
               <article
                 key={r.name}
-                className="flex h-65 w-105 flex-col rounded-xl bg-white p-7 shadow-[0_2px_10px_rgba(26,37,47,0.07)] transition-shadow duration-300 hover:shadow-[0_8px_24px_rgba(26,37,47,0.12)]"
+                className="flex h-78 w-115 flex-col rounded-xl bg-white p-7 shadow-[0_2px_10px_rgba(26,37,47,0.07)] transition-shadow duration-300 hover:shadow-[0_8px_24px_rgba(26,37,47,0.12)]"
               >
                 <span aria-hidden className="font-display text-[54px] leading-none text-brand">
                   &ldquo;
                 </span>
-                <p className="mt-2 line-clamp-5 flex-1 text-[14px] leading-6 text-ink-soft">
+                <p className="mt-2 line-clamp-6 flex-1 text-[14px] leading-6 text-ink-soft">
                   {r.quote}
                 </p>
                 <div className="mt-4 flex items-center gap-3">

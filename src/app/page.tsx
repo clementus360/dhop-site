@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Favorites } from "@/components/Favorites";
+import { ExploreMore } from "@/components/ExploreMore";
+import { BreakfastPizza } from "@/components/BreakfastPizza";
 import { WhyDhop } from "@/components/WhyDhop";
 import { Faq } from "@/components/Faq";
 import { Mission } from "@/components/Mission";
@@ -15,7 +16,8 @@ export default function Home() {
     <main className="relative">
       <Header />
       <Hero />
-      <Favorites />
+      <ExploreMore />
+      <BreakfastPizza />
       <WhyDhop />
       <Faq />
       <Mission />

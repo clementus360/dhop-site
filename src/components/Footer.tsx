@@ -95,7 +95,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} Downtown House of Pizza, Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} DHOP, Inc. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white">Privacy Policy</a>
             <span>•</span>
