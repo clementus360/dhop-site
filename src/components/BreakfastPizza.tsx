@@ -109,16 +109,16 @@ export function BreakfastPizza() {
   }, []);
 
   return (
-    <section id="breakfast" className="relative overflow-hidden bg-night py-24 text-white">
-      {/* Decorative red disc */}
+    <section id="breakfast" className="relative overflow-hidden bg-night py-16 text-white sm:py-24">
+      {/* Decorative red disc — desktop only, would clash with copy on mobile */}
       <Reveal
         anim="scale"
-        className="pointer-events-none absolute -left-40 top-1/2 aspect-square w-160 -translate-y-1/2 rounded-full bg-brand/90 blur-[1px]"
+        className="pointer-events-none absolute -left-40 top-1/2 hidden aspect-square w-160 -translate-y-1/2 rounded-full bg-brand/90 blur-[1px] lg:block"
       >
         <span className="sr-only">decorative</span>
       </Reveal>
 
-      <div className="relative mx-auto max-w-360 px-10">
+      <div className="relative mx-auto max-w-360 px-6 sm:px-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           {/* Hero pizza image */}
           <div className="relative lg:col-span-6">
@@ -201,7 +201,7 @@ export function BreakfastPizza() {
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
               Now serving — mornings only
             </p>
-            <h2 className="mt-3 font-display text-[56px] leading-15 text-balance">
+            <h2 className="mt-3 font-display text-[36px] leading-11 text-balance sm:text-[44px] sm:leading-12 lg:text-[56px] lg:leading-15">
               Breakfast,
               <br />
               <span className="text-brand">By the Slice.</span>

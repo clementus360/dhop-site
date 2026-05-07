@@ -41,8 +41,8 @@ const REVIEWS = [
 
 export function Testimonials() {
   return (
-    <section className="bg-cream py-20">
-      <div className="mx-auto max-w-360 px-10">
+    <section className="bg-cream py-16 sm:py-20">
+      <div className="mx-auto max-w-360 px-6 sm:px-10">
         <h2 className="text-center font-display text-[40px] leading-11 text-ink">
           What Customers Are <span className="text-brand">Saying</span>
         </h2>

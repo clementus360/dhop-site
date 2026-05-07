@@ -3,12 +3,12 @@ import Image from "next/image";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand text-white">
-      <div className="relative mx-auto max-w-360 px-10 pt-40 pb-0">
+      <div className="relative mx-auto max-w-360 px-6 pt-32 pb-0 sm:px-10 sm:pt-40">
         <div className="relative z-10 mx-auto max-w-210 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 sm:text-xs">
             Hand-tossed in Fort Myers since 2005
           </p>
-          <h1 className="mt-3 font-display text-[64px] leading-17 tracking-tight text-balance">
+          <h1 className="mt-3 font-display text-[40px] leading-12 tracking-tight text-balance sm:text-[52px] sm:leading-15 lg:text-[64px] lg:leading-17">
             Watch It Made.
             <br />
             Taste the Difference.

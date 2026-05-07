@@ -31,8 +31,8 @@ export function Header() {
       }`}
     >
       <div
-        className={`mx-auto flex max-w-360 items-center justify-between px-10 transition-all duration-300 ${
-          scrolled ? "h-20" : "h-32"
+        className={`mx-auto flex max-w-360 items-center justify-between px-6 transition-all duration-300 sm:px-10 ${
+          scrolled ? "h-20" : "h-24 sm:h-32"
         }`}
       >
         <Link href="/" className="flex items-center" aria-label="DHOP">
@@ -42,12 +42,14 @@ export function Header() {
             width={140}
             height={120}
             priority
-            className={`w-auto transition-all duration-300 ${scrolled ? "h-14" : "h-32"}`}
+            className={`w-auto transition-all duration-300 ${
+              scrolled ? "h-12 sm:h-14" : "h-20 sm:h-32"
+            }`}
           />
         </Link>
 
-        <nav className="flex items-center gap-10">
-          <ul className="flex items-center gap-10">
+        <nav className="flex items-center gap-6 lg:gap-10">
+          <ul className="hidden items-center gap-6 lg:flex lg:gap-10">
             {NAV.map((item) => (
               <li key={item.label}>
                 <a
@@ -61,7 +63,7 @@ export function Header() {
           </ul>
           <a
             href="#order"
-            className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold text-brand transition hover:bg-cream"
+            className="inline-flex h-11 items-center justify-center rounded-full bg-white px-5 text-[14px] font-semibold text-brand transition hover:bg-cream sm:h-12 sm:px-7 sm:text-[15px]"
           >
             Order Now
           </a>

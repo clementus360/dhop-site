@@ -3,13 +3,13 @@ import { Reveal } from "./Reveal";
 
 export function Mission() {
   return (
-    <section className="relative overflow-hidden bg-white py-20">
-      <div className="mx-auto grid max-w-360 grid-cols-1 items-center gap-12 px-20 lg:grid-cols-2">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+      <div className="mx-auto grid max-w-360 grid-cols-1 items-center gap-12 px-6 sm:px-10 lg:grid-cols-2 lg:px-20">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">
             Our Mission Statement
           </p>
-          <h2 className="mt-4 font-display text-[60px] leading-16 text-ink">
+          <h2 className="mt-4 font-display text-[36px] leading-11 text-ink sm:text-[44px] sm:leading-12 lg:text-[60px] lg:leading-16">
             Quality Ingredients, Pizza Making Skill, And Love Go{" "}
             <span className="text-brand">Into Every Pie.</span>
           </h2>
@@ -30,7 +30,7 @@ export function Mission() {
           </div>
         </div>
 
-        <div className="relative h-150">
+        <div className="relative h-100 sm:h-130 lg:h-150">
           {/* Red disc backdrop */}
           <Reveal
             anim="scale"

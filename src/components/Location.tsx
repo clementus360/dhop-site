@@ -2,8 +2,8 @@ export function Location() {
   return (
     <section className="bg-cream">
       <div className="mx-auto grid max-w-360 grid-cols-1 items-stretch lg:grid-cols-12">
-        <div className="flex items-center px-10 py-16 lg:col-span-4 lg:px-20">
-          <h2 className="font-display text-[56px] leading-15 text-ink">
+        <div className="flex items-center px-6 py-12 sm:px-10 sm:py-16 lg:col-span-4 lg:px-20">
+          <h2 className="font-display text-[36px] leading-11 text-ink sm:text-[44px] sm:leading-12 lg:text-[56px] lg:leading-15">
             Located In
             <br />
             The Heart Of

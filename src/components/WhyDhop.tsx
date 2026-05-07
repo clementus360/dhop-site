@@ -3,14 +3,14 @@ import { Reveal } from "./Reveal";
 
 export function WhyDhop() {
   return (
-    <section id="dhop-way" className="bg-cream py-20">
-      <div className="mx-auto max-w-360 px-20">
+    <section id="dhop-way" className="bg-cream py-16 sm:py-20">
+      <div className="mx-auto max-w-360 px-6 sm:px-10 lg:px-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
               The DHOP Way
             </p>
-            <h2 className="mt-3 font-display text-[64px] leading-16 text-ink text-balance">
+            <h2 className="mt-3 font-display text-[36px] leading-11 text-ink text-balance sm:text-[48px] sm:leading-13 lg:text-[64px] lg:leading-16">
               Why Is DHOP{" "}
               <span className="text-brand">Fort Myers&apos; Favorite?</span>
             </h2>
@@ -36,7 +36,7 @@ export function WhyDhop() {
             <Reveal
               anim="scale"
               delay={120}
-              className="pointer-events-none absolute -right-12 -top-16 h-70 w-70"
+              className="pointer-events-none absolute -right-6 -top-4 h-40 w-40 sm:-right-12 sm:-top-16 sm:h-70 sm:w-70"
             >
               <Image
                 src="/img/why/simple-ingredients.png"
@@ -58,7 +58,7 @@ export function WhyDhop() {
             <Reveal
               anim="right"
               delay={80}
-              className="pointer-events-none absolute -right-20 -top-20 h-65 w-80"
+              className="pointer-events-none absolute -right-8 -top-4 h-40 w-48 sm:-right-20 sm:-top-20 sm:h-65 sm:w-80"
             >
               <Image
                 src="/img/why/dough-makers.png"
@@ -76,24 +76,42 @@ export function WhyDhop() {
           </BentoCard>
 
           <BentoCard className="lg:col-span-7" theme="light">
-            <div className="pointer-events-none absolute -right-4 -top-36 h-130 w-200">
-              <Reveal
-                anim="scale"
-                delay={150}
-                className="absolute -right-8 top-32 aspect-square w-80 rounded-full bg-brand"
-              >
-                <span className="sr-only">decorative</span>
-              </Reveal>
-              <Reveal anim="up" delay={280} className="relative h-full w-full">
-                <Image
-                  src="/img/why/atmosphere.png"
-                  alt="DHOP pizza maker"
-                  fill
-                  sizes="320px"
-                  className="object-contain object-bottom-right"
-                />
-              </Reveal>
-            </div>
+            {/* Mobile + tablet: compact atmosphere image (upper-right corner) */}
+            <Reveal
+              anim="scale"
+              delay={150}
+              className="pointer-events-none absolute -right-2 -top-2 h-40 w-40 sm:-right-4 sm:-top-4 sm:h-52 sm:w-52 lg:hidden"
+            >
+              <Image
+                src="/img/why/atmosphere.png"
+                alt=""
+                fill
+                sizes="(max-width: 640px) 160px, 208px"
+                className="object-contain object-top-right"
+              />
+            </Reveal>
+            {/* Desktop: red circle accent */}
+            <Reveal
+              anim="scale"
+              delay={150}
+              className="pointer-events-none absolute -right-10 -top-10 hidden aspect-square w-56 rounded-full bg-brand lg:block"
+            >
+              <span className="sr-only">decorative</span>
+            </Reveal>
+            {/* Desktop: full atmosphere photo bottom-anchored — feet at card bottom */}
+            <Reveal
+              anim="up"
+              delay={280}
+              className="pointer-events-none absolute bottom-0 right-2 hidden h-full w-65 lg:block"
+            >
+              <Image
+                src="/img/why/atmosphere.png"
+                alt="DHOP pizza maker"
+                fill
+                sizes="280px"
+                className="object-contain object-bottom-right"
+              />
+            </Reveal>
             <BentoText
               title="Vibrant and relaxed atmosphere"
               body="Choose a window seat right on Hendry Street, a long table with family, or relax in the shade out back on the patio."
@@ -107,7 +125,7 @@ export function WhyDhop() {
 
 function SimpleIngredientsArt() {
   return (
-    <div className="pointer-events-none absolute -top-6 right-2 h-60 w-65">
+    <div className="pointer-events-none absolute -top-6 right-2 h-60 w-65 origin-top-right scale-75 sm:scale-100">
       {/* Tomato slices arranged in a small composition */}
       <Reveal anim="scale" delay={60} className="absolute left-2 top-10 h-30 w-30">
         <Image src="/img/why/tomato.png" alt="" fill sizes="120px" className="object-contain" />
@@ -164,7 +182,7 @@ function BentoText({
   const titleColor = theme === "brand" ? "text-white" : "text-ink";
   const bodyColor = theme === "brand" ? "text-white/95" : "text-ink-soft";
   return (
-    <div className="absolute bottom-6 left-6 right-6 z-10 max-w-[55%]">
+    <div className="absolute bottom-6 left-6 right-6 z-10 max-w-full sm:max-w-[55%]">
       <h3 className={`font-display text-[28px] leading-8.5 ${titleColor}`}>
         {title}
       </h3>

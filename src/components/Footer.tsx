@@ -33,7 +33,7 @@ const SOCIAL = [
 export function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="mx-auto max-w-[1440px] px-10 py-16">
+      <div className="mx-auto max-w-360 px-6 py-12 sm:px-10 sm:py-16">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Image

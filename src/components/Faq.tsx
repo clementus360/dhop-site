@@ -29,8 +29,8 @@ export function Faq() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="bg-night py-24">
-      <div className="mx-auto max-w-360 px-10">
+    <section className="bg-night py-16 sm:py-24">
+      <div className="mx-auto max-w-360 px-6 sm:px-10">
         <h2 className="text-center font-display text-[40px] leading-11 text-white">
           Frequently Asked <span className="text-brand">Questions</span>
         </h2>
