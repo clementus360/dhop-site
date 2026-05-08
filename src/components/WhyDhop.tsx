@@ -11,8 +11,8 @@ export function WhyDhop() {
               The DHOP Way
             </p>
             <h2 className="mt-3 font-display text-[36px] leading-11 text-ink text-balance sm:text-[48px] sm:leading-13 lg:text-[64px] lg:leading-16">
-              Why Is DHOP{" "}
-              <span className="text-brand">Fort Myers&apos; Favorite?</span>
+              Best in Lee County,{" "}
+              <span className="text-brand">Awesome and Delicious!</span>
             </h2>
           </div>
           <p className="self-center text-base leading-6 text-ink">
@@ -90,13 +90,19 @@ export function WhyDhop() {
                 className="object-contain object-top-right"
               />
             </Reveal>
-            {/* Desktop: red circle accent */}
+            {/* Desktop: red circle accent with DHOP mark */}
             <Reveal
               anim="scale"
               delay={150}
-              className="pointer-events-none absolute -right-10 -top-10 hidden aspect-square w-56 rounded-full bg-brand lg:block"
+              className="pointer-events-none absolute -right-10 -top-10 hidden aspect-square w-56 items-center justify-center rounded-full bg-brand lg:flex"
             >
-              <span className="sr-only">decorative</span>
+              <Image
+                src="/img/brand/dhop-logo-white.png"
+                alt=""
+                width={200}
+                height={200}
+                className="h-44 w-44 object-contain opacity-90"
+              />
             </Reveal>
             {/* Desktop: full atmosphere photo bottom-anchored — feet at card bottom */}
             <Reveal

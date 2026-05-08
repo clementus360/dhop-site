@@ -24,11 +24,11 @@ export function MoreThanPizza() {
         <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {/* Top row */}
           <div className="grid grid-cols-2 gap-4">
-            <Tile src="/img/bento/wings.webp" label="Wings" price="$10.99" className="h-72 sm:h-100 lg:h-143.5" />
+            <Tile src="/img/bento/wings.webp" label="Wings" price="10.99" className="h-72 sm:h-100 lg:h-143.5" />
             <Tile
               src="/img/bento/greek-salad.webp"
               label="Greek Salad"
-              price="$9.49"
+              price="9.49"
               className="h-72 sm:h-100 lg:h-143.5"
             />
           </div>
@@ -37,20 +37,20 @@ export function MoreThanPizza() {
               <Tile
                 src="/img/bento/pinwheels.webp"
                 label="Pinwheels"
-                price="$5.49"
+                price="5.49"
                 className="h-44 sm:h-60 lg:h-68.75"
               />
               <Tile
                 src="/img/bento/house-salad.webp"
                 label="House Salad"
-                price="$8.49"
+                price="8.49"
                 className="h-44 sm:h-60 lg:h-68.75"
               />
             </div>
             <Tile
               src="/img/bento/tiramisu.webp"
               label="Tiramisu"
-              price="$6.99"
+              price="6.99"
               className="h-44 sm:h-60 lg:h-68.75"
             />
           </div>
@@ -58,13 +58,13 @@ export function MoreThanPizza() {
           <Tile
             src="/img/bento/stromboli.webp"
             label="Stromboli"
-            price="$11.99"
+            price="11.99"
             className="h-44 sm:h-60 lg:h-68.75"
           />
           <Tile
             src="/img/bento/philly.webp"
             label="Philly Cheesesteak"
-            price="$12.49"
+            price="12.49"
             className="h-44 sm:h-60 lg:h-68.75"
           />
         </div>

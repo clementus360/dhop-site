@@ -215,6 +215,105 @@ body {
   }
 }
 
+/* Hero scroll parallax is driven via inline style in Hero.tsx */
+
+/* Voted Best section — confetti, stamp, twinkling stars */
+.voted-best-bg {
+  background-image: radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 25, 25, 0.06),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(20, 30, 42, 0.06),
+      transparent 35%
+    );
+}
+
+@keyframes voted-confetti-rise {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(20deg);
+    opacity: 1;
+  }
+}
+
+.voted-confetti {
+  animation: voted-confetti-rise 6s ease-in-out infinite;
+}
+.voted-confetti-a { animation-delay: 0s; }
+.voted-confetti-b { animation-delay: 0.6s; }
+.voted-confetti-c { animation-delay: 1.2s; }
+.voted-confetti-d { animation-delay: 1.8s; }
+.voted-confetti-e { animation-delay: 2.4s; }
+
+@keyframes voted-stamp-pop {
+  0% {
+    transform: rotate(-3deg) scale(0.92);
+  }
+  70% {
+    transform: rotate(2deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(-2deg) scale(1);
+  }
+}
+
+.voted-stamp {
+  animation: voted-stamp-pop 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+  transform-origin: center;
+}
+
+@keyframes voted-stars-twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.2) rotate(20deg);
+    opacity: 1;
+  }
+}
+
+.voted-stars {
+  animation: voted-stars-twinkle 3.4s ease-in-out infinite;
+  transform-origin: center;
+}
+.voted-stars-2 {
+  animation: voted-stars-twinkle 3.4s ease-in-out 1.2s infinite;
+  transform-origin: center;
+}
+
+@keyframes voted-logo-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.voted-logo-wrap {
+  animation: voted-logo-float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voted-confetti,
+  .voted-stamp,
+  .voted-stars,
+  .voted-stars-2,
+  .voted-logo-wrap {
+    animation: none;
+  }
+}
+
 .float-a {
   opacity: 0;
   animation:

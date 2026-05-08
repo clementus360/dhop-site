@@ -9,19 +9,19 @@ const SLICES = [
     name: "Bacon & Egg",
     description: "Smoked bacon, scrambled egg, sharp cheddar, mozzarella.",
     image: "/img/pizzas/chicken-bacon-ranch.webp",
-    price: "$12.99",
+    price: "12.99",
   },
   {
     name: "Sunrise White",
     description: "Ricotta, soft egg, scallions, finished with chili oil.",
     image: "/img/pizzas/white.webp",
-    price: "$12.49",
+    price: "12.49",
   },
   {
     name: "Sausage & Pepper",
     description: "Italian breakfast sausage, peppers, basil, mozzarella.",
     image: "/img/pizzas/tomato-basil.webp",
-    price: "$11.99",
+    price: "11.99",
   },
 ];
 
@@ -110,13 +110,30 @@ export function BreakfastPizza() {
 
   return (
     <section id="breakfast" className="relative overflow-hidden bg-night py-16 text-white sm:py-24">
-      {/* Decorative red disc — desktop only, would clash with copy on mobile */}
-      <Reveal
-        anim="scale"
-        className="pointer-events-none absolute -left-40 top-1/2 hidden aspect-square w-160 -translate-y-1/2 rounded-full bg-brand/90 blur-[1px] lg:block"
-      >
-        <span className="sr-only">decorative</span>
-      </Reveal>
+      {/* Decorative red disc — desktop only. Outer wrapper owns the centering
+          transform; the disc and DHOP mark are siblings inside so the disc can
+          stay blurred without smudging the logo. */}
+      <div className="pointer-events-none absolute -left-40 top-1/2 hidden aspect-square w-160 -translate-y-1/2 lg:block">
+        <Reveal
+          anim="scale"
+          className="absolute inset-0 rounded-full bg-brand/90 blur-[1px]"
+        >
+          <span className="sr-only">decorative</span>
+        </Reveal>
+        <Reveal
+          anim="scale"
+          delay={120}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <Image
+            src="/img/brand/dhop-logo-white.png"
+            alt=""
+            width={400}
+            height={400}
+            className="h-md w-md object-contain opacity-20"
+          />
+        </Reveal>
+      </div>
 
       <div className="relative mx-auto max-w-360 px-6 sm:px-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
@@ -173,7 +190,7 @@ export function BreakfastPizza() {
                     Starting at
                   </span>
                   <span className="block text-center font-display text-3xl leading-none text-brand">
-                    $11.99
+                    11.99
                   </span>
                 </div>
               </div>

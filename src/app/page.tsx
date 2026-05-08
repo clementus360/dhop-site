@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { VotedBest } from "@/components/VotedBest";
 import { ExploreMore } from "@/components/ExploreMore";
 import { BreakfastPizza } from "@/components/BreakfastPizza";
 import { WhyDhop } from "@/components/WhyDhop";
@@ -20,6 +21,7 @@ export default function Home() {
       <BreakfastPizza />
       <WhyDhop />
       <Faq />
+      <VotedBest />
       <Mission />
       <Testimonials />
       <MoreThanPizza />

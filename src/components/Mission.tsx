@@ -31,13 +31,22 @@ export function Mission() {
         </div>
 
         <div className="relative h-100 sm:h-130 lg:h-150">
-          {/* Red disc backdrop */}
-          <Reveal
-            anim="scale"
-            className="absolute -right-20 top-1/2 aspect-square w-[110%] -translate-y-1/2 rounded-full bg-brand"
-          >
-            <span className="sr-only">decorative</span>
-          </Reveal>
+          {/* Red disc backdrop with DHOP mark — outer wrapper holds the position
+              transform so the Reveal's scale animation can't overwrite it */}
+          <div className="pointer-events-none absolute -right-20 top-1/2 aspect-square w-[110%] -translate-y-1/2">
+            <Reveal
+              anim="scale"
+              className="flex h-full w-full items-center justify-center rounded-full bg-brand"
+            >
+              <Image
+                src="/img/brand/dhop-logo-white.png"
+                alt=""
+                width={400}
+                height={400}
+                className="h-72 w-72 object-contain opacity-25 sm:h-96 sm:w-96 lg:h-md lg:w-md"
+              />
+            </Reveal>
+          </div>
 
           {/* Main pizza */}
           <Reveal anim="up" delay={180} className="absolute inset-0">

@@ -20,7 +20,7 @@ const HOURS = [
     Icon: MapPin,
     text: "Pizza Delivery Radius Limited to 3 Miles. Extended delivery through 3rd party services",
   },
-  { Icon: Bike, text: "Delivery Fee $3.00" },
+  { Icon: Bike, text: "Delivery Fee 3.00" },
 ];
 
 const SOCIAL = [
