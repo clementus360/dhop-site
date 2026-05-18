@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getMenu } from "@/data/menu";
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
     "The full DHOP menu — specialty pizzas, breakfast slices, hot subs, strombolis, calzones, wings, salads, desserts and catering. Hand-tossed in Downtown Fort Myers since 2005.",
 };
 
-export default function MenuPage() {
+export default async function MenuPage() {
+  await connection();
   const menu = getMenu();
 
   return (

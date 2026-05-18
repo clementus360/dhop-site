@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { VotedBest } from "@/components/VotedBest";
@@ -13,7 +14,8 @@ import { Partners } from "@/components/Partners";
 import { Location } from "@/components/Location";
 import { Footer } from "@/components/Footer";
 
-export default function Home() {
+export default async function Home() {
+  await connection();
   return (
     <main className="relative">
       <Header />
