@@ -83,7 +83,7 @@ export function Hero() {
               Order Now
             </a>
             <a
-              href="#menu"
+              href="/menu"
               className="inline-flex h-12 min-w-60.5 items-center justify-center rounded-full border border-white px-8 text-[15px] font-semibold text-white transition hover:bg-white/10"
             >
               Read Menu

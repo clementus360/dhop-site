@@ -1,37 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "./Reveal";
 
-function Laurel({ flipped = false }: { flipped?: boolean }) {
-  return (
-    <svg
-      viewBox="0 0 80 200"
-      aria-hidden
-      className={`h-full w-auto text-brand ${flipped ? "-scale-x-100" : ""}`}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      {/* Main stem curving inward at top and bottom */}
-      <path d="M52 8 C 28 40, 18 80, 22 120 C 26 160, 40 188, 56 196" />
-      {/* Outer leaves */}
-      <path d="M40 22 C 30 24, 22 30, 18 38 C 26 40, 34 36, 40 28 Z" />
-      <path d="M30 50 C 18 50, 10 56, 8 64 C 18 68, 28 62, 32 54 Z" />
-      <path d="M24 80 C 12 80, 4 88, 4 98 C 14 100, 24 92, 26 84 Z" />
-      <path d="M22 112 C 10 114, 4 124, 6 134 C 16 134, 24 126, 26 116 Z" />
-      <path d="M26 144 C 16 148, 12 158, 16 168 C 26 168, 32 158, 32 148 Z" />
-      <path d="M38 174 C 30 178, 28 188, 32 196 C 40 194, 46 186, 44 178 Z" />
-      {/* Inner leaves */}
-      <path d="M44 30 C 50 32, 56 34, 60 32 C 56 24, 50 22, 44 24 Z" />
-      <path d="M34 60 C 40 62, 46 62, 50 60 C 46 52, 40 50, 34 54 Z" />
-      <path d="M28 90 C 34 92, 40 92, 44 90 C 40 82, 34 80, 28 84 Z" />
-      <path d="M28 120 C 34 122, 40 122, 44 120 C 40 112, 34 110, 28 114 Z" />
-      <path d="M34 150 C 40 152, 46 150, 48 146 C 44 140, 38 140, 34 144 Z" />
-    </svg>
-  );
-}
-
 export function VotedBest() {
   return (
     <section className="voted-best-bg relative overflow-hidden bg-cream py-24 sm:py-32 lg:py-40">
@@ -83,11 +52,6 @@ export function VotedBest() {
             </svg>
           </span>
 
-          {/* Left laurel */}
-          <div className="h-32 shrink-0 sm:h-44 lg:h-52">
-            <Laurel />
-          </div>
-
           {/* Logo */}
           <div className="voted-logo-wrap flex-1 px-2 sm:px-4">
             <Image
@@ -99,10 +63,6 @@ export function VotedBest() {
             />
           </div>
 
-          {/* Right laurel */}
-          <div className="h-32 shrink-0 sm:h-44 lg:h-52">
-            <Laurel flipped />
-          </div>
         </Reveal>
 
         {/* Supporting copy */}

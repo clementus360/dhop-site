@@ -1,130 +1,56 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import Link from "next/link";
+import { useMemo, useRef, useState } from "react";
+import {
+  formatPrice,
+  getFeaturedItems,
+  getMenu,
+  getStartingPrice,
+  type MenuItem,
+} from "@/data/menu";
 
-const TABS = ["Pizza", "Breakfast", "Desserts", "Merch"] as const;
-type Tab = (typeof TABS)[number];
+const TABS = [
+  { key: "specialty-pizzas", label: "Pizza" },
+  { key: "breakfast-pizzas", label: "Breakfast" },
+  { key: "desserts", label: "Desserts" },
+  { key: "merch", label: "Merch" },
+] as const;
 
-type Item = {
-  name: string;
-  description: string;
-  image: string;
-  price: string;
-  badge?: string;
-};
+type TabKey = (typeof TABS)[number]["key"];
 
-const ITEMS: Record<Tab, Item[]> = {
-  Pizza: [
-    {
-      name: "Pepperoni",
-      description: "Our No. 1 since 2005. Classic pepperoni, mozzarella, hand-tossed crust.",
-      image: "/img/pizzas/pepperoni.webp",
-      price: "14.99",
-      badge: "Best Seller",
-    },
-    {
-      name: "Tomato Basil",
-      description: "Garlic & oil base, fresh basil, tomatoes and mozzarella.",
-      image: "/img/pizzas/tomato-basil.webp",
-      price: "13.49",
-    },
-    {
-      name: "White Pizza",
-      description: "Garlic & oil, fresh garlic, ricotta and mozzarella.",
-      image: "/img/pizzas/white.webp",
-      price: "13.99",
-    },
-    {
-      name: "Chicken Bacon Ranch",
-      description: "Sicilian style with chicken, bacon, mozzarella and ranch.",
-      image: "/img/pizzas/chicken-bacon-ranch.webp",
-      price: "15.99",
-      badge: "Fan Favorite",
-    },
-  ],
-  Breakfast: [
-    {
-      name: "Bacon & Egg Pie",
-      description: "Scrambled eggs, smoked bacon, sharp cheddar and mozzarella.",
-      image: "/img/pizzas/chicken-bacon-ranch.webp",
-      price: "12.99",
-      badge: "New",
-    },
-    {
-      name: "Sunrise White",
-      description: "Ricotta, soft egg, scallions and a drizzle of chili oil.",
-      image: "/img/pizzas/white.webp",
-      price: "12.49",
-    },
-    {
-      name: "Sausage & Pepper Slice",
-      description: "Italian breakfast sausage, peppers, mozzarella, fresh basil.",
-      image: "/img/pizzas/tomato-basil.webp",
-      price: "11.99",
-    },
-    {
-      name: "Pepperoni Sunny",
-      description: "Classic pepperoni meets breakfast — finished with a sunny egg.",
-      image: "/img/pizzas/pepperoni.webp",
-      price: "13.49",
-    },
-  ],
-  Desserts: [
-    {
-      name: "House Tiramisu",
-      description: "Coffee-soaked ladyfingers, mascarpone, dusted cocoa.",
-      image: "/img/bento/tiramisu.webp",
-      price: "6.99",
-      badge: "Made In-House",
-    },
-    {
-      name: "Cinnamon Pinwheels",
-      description: "Pillowy dough rolled with cinnamon sugar and sweet glaze.",
-      image: "/img/bento/pinwheels.webp",
-      price: "5.49",
-    },
-    {
-      name: "Cannoli Duo",
-      description: "Two crisp shells filled with sweet ricotta and chocolate.",
-      image: "/img/bento/tiramisu.webp",
-      price: "5.99",
-    },
-    {
-      name: "Sweet Stromboli",
-      description: "Warm dessert stromboli with Nutella, banana and powdered sugar.",
-      image: "/img/bento/stromboli.webp",
-      price: "7.49",
-    },
-  ],
-  Merch: [
-    {
-      name: "DHOP Classic Tee",
-      description: "Soft cotton crewneck. Iconic red logo on natural cream.",
-      image: "/img/brand/dhop-logo-color.png",
-      price: "24.99",
-    },
-    {
-      name: "20-Year Anniversary Cap",
-      description: "Heritage 20-year crest. Adjustable strap, structured front.",
-      image: "/img/brand/dhop-20-circle.webp",
-      price: "22.00",
-      badge: "Limited",
-    },
-    {
-      name: "Hand-Tossed Hoodie",
-      description: "Heavyweight fleece, oversized fit, classic DHOP wordmark.",
-      image: "/img/brand/dhop-logo-white.png",
-      price: "48.00",
-    },
-    {
-      name: "House Apron",
-      description: "Real kitchen apron, double front pocket, cross-back straps.",
-      image: "/img/brand/dhop-logo-color.png",
-      price: "28.00",
-    },
-  ],
-};
+const MERCH: MenuItem[] = [
+  {
+    id: "merch-tee",
+    name: "DHOP Classic Tee",
+    description: "Soft cotton crewneck. Iconic red logo on natural cream.",
+    image: "/img/brand/dhop-logo-color.png",
+    price: 24.99,
+  },
+  {
+    id: "merch-cap",
+    name: "20-Year Anniversary Cap",
+    description: "Heritage 20-year crest. Adjustable strap, structured front.",
+    image: "/img/brand/dhop-20-circle.webp",
+    price: 22,
+    badges: ["limited"],
+  },
+  {
+    id: "merch-hoodie",
+    name: "Hand-Tossed Hoodie",
+    description: "Heavyweight fleece, oversized fit, classic DHOP wordmark.",
+    image: "/img/brand/dhop-logo-white.png",
+    price: 48,
+  },
+  {
+    id: "merch-apron",
+    name: "House Apron",
+    description: "Real kitchen apron, double front pocket, cross-back straps.",
+    image: "/img/brand/dhop-logo-color.png",
+    price: 28,
+  },
+];
 
 function Chevron({ direction }: { direction: "left" | "right" }) {
   return (
@@ -144,9 +70,16 @@ function Chevron({ direction }: { direction: "left" | "right" }) {
 }
 
 export function ExploreMore() {
-  const [active, setActive] = useState<Tab>("Pizza");
-  const items = ITEMS[active];
+  const [active, setActive] = useState<TabKey>("specialty-pizzas");
   const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const items = useMemo<MenuItem[]>(() => {
+    if (active === "merch") return MERCH;
+    return getFeaturedItems(active, 6);
+  }, [active]);
+
+  const isMerch = active === "merch";
+  const menuSectionAnchor = isMerch ? "/#merch" : `/menu#${active}`;
 
   const scrollByCard = (direction: -1 | 1) => {
     const node = scrollerRef.current;
@@ -155,6 +88,13 @@ export function ExploreMore() {
     const step = (card?.getBoundingClientRect().width ?? 300) + 24;
     node.scrollBy({ left: direction * step, behavior: "smooth" });
   };
+
+  // Lookup display name for the active tab (used in the footer CTA).
+  const activeTabLabel =
+    TABS.find((t) => t.key === active)?.label.toLowerCase() ?? "menu";
+  // Heading uses the category name from the data source when possible.
+  const menu = getMenu();
+  const category = menu.categories.find((c) => c.id === active);
 
   return (
     <section id="menu" className="bg-cream py-16 sm:py-20">
@@ -180,21 +120,21 @@ export function ExploreMore() {
             className="inline-flex flex-wrap items-center gap-1 rounded-full border border-ink/10 bg-white p-1.5 shadow-[0_4px_18px_rgba(20,30,42,0.06)]"
           >
             {TABS.map((tab) => {
-              const selected = tab === active;
+              const selected = tab.key === active;
               return (
                 <button
-                  key={tab}
+                  key={tab.key}
                   role="tab"
                   type="button"
                   aria-selected={selected}
-                  onClick={() => setActive(tab)}
+                  onClick={() => setActive(tab.key)}
                   className={`relative inline-flex h-11 items-center justify-center rounded-full px-4 text-[13px] font-semibold transition-colors duration-200 sm:px-6 sm:text-[14px] ${
                     selected
                       ? "bg-brand text-white shadow-[0_6px_14px_rgba(255,25,25,0.28)]"
                       : "text-ink/80 hover:text-brand"
                   }`}
                 >
-                  {tab}
+                  {tab.label}
                 </button>
               );
             })}
@@ -224,62 +164,76 @@ export function ExploreMore() {
             key={active}
             ref={scrollerRef}
             role="tabpanel"
-            aria-label={`${active} menu`}
+            aria-label={`${activeTabLabel} menu`}
             className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-px-6 px-6 pb-3 sm:-mx-10 sm:scroll-px-10 sm:px-10"
           >
-            {items.map((item) => (
-              <article
-                key={`${active}-${item.name}`}
-                className="group relative flex w-72 shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_24px_rgba(20,30,42,0.07)] ring-1 ring-ink/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(20,30,42,0.14)] sm:w-80"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-cream-2">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    sizes="(max-width: 640px) 288px, 320px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
-                  {item.badge && (
-                    <span className="absolute left-4 top-4 rounded-full bg-brand px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-[0_4px_10px_rgba(255,25,25,0.35)]">
-                      {item.badge}
-                    </span>
-                  )}
-                  <span className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-sm font-bold text-ink shadow-[0_4px_10px_rgba(20,30,42,0.12)] backdrop-blur">
-                    {item.price}
-                  </span>
-                </div>
-
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="font-display text-[22px] leading-7 text-ink transition-colors duration-300 group-hover:text-brand">
-                    {item.name}
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-ink-soft">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-5 flex items-center justify-between">
-                    <span className="font-display text-2xl text-ink">{item.price}</span>
-                    <button
-                      type="button"
-                      className="inline-flex h-10 items-center justify-center rounded-full bg-brand px-5 text-[13px] font-bold text-white transition hover:bg-brand-dark"
-                    >
-                      {active === "Merch" ? "Add to bag" : "Add to order"}
-                    </button>
+            {items.map((item) => {
+              const startingPrice = getStartingPrice(item);
+              const badge = item.badges?.[0];
+              return (
+                <article
+                  key={item.id}
+                  className="group relative flex w-72 shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_24px_rgba(20,30,42,0.07)] ring-1 ring-ink/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(20,30,42,0.14)] sm:w-80"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-cream-2">
+                    {item.image && (
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        sizes="(max-width: 640px) 288px, 320px"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      />
+                    )}
+                    {badge && (
+                      <span className="absolute left-4 top-4 rounded-full bg-brand px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-[0_4px_10px_rgba(255,25,25,0.35)]">
+                        {badge.replace("-", " ")}
+                      </span>
+                    )}
+                    {startingPrice !== undefined && (
+                      <span className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-sm font-bold text-ink shadow-[0_4px_10px_rgba(20,30,42,0.12)] backdrop-blur">
+                        {formatPrice(startingPrice)}
+                      </span>
+                    )}
                   </div>
-                </div>
-              </article>
-            ))}
+
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="font-display text-[22px] leading-7 text-ink transition-colors duration-300 group-hover:text-brand">
+                      {item.name}
+                    </h3>
+                    {item.description && (
+                      <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-ink-soft">
+                        {item.description}
+                      </p>
+                    )}
+
+                    <div className="mt-5 flex items-center justify-between">
+                      <span className="font-display text-2xl text-ink">
+                        {startingPrice !== undefined
+                          ? formatPrice(startingPrice)
+                          : "—"}
+                      </span>
+                      <button
+                        type="button"
+                        className="inline-flex h-10 items-center justify-center rounded-full bg-brand px-5 text-[13px] font-bold text-white transition hover:bg-brand-dark"
+                      >
+                        {isMerch ? "Add to bag" : "Add to order"}
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
 
         <div className="mt-10 flex justify-center sm:mt-12">
-          <a
-            href="#order"
+          <Link
+            href={menuSectionAnchor}
             className="inline-flex h-12 items-center justify-center rounded-full border-2 border-ink px-8 text-[14px] font-bold text-ink transition hover:bg-ink hover:text-white"
           >
-            See the full {active.toLowerCase()} menu
-          </a>
+            See the full {category?.name.toLowerCase() ?? activeTabLabel} menu
+          </Link>
         </div>
       </div>
     </section>
