@@ -98,12 +98,20 @@ export type MenuData = {
   notes: string[];
 };
 
+/**
+ * Branded fallback shown on any menu item that doesn't yet have a real
+ * photo. Using the round 20-year logo gives every card a consistent on-
+ * brand look until product photography is shot and swapped in.
+ */
+const FALLBACK_IMG = "/img/brand/dhop-20-circle.webp";
+
 const PIZZA_IMG = {
   pepperoni: "/img/pizzas/pepperoni.webp",
   tomatoBasil: "/img/pizzas/tomato-basil.webp",
   white: "/img/pizzas/white.webp",
   chickenBaconRanch: "/img/pizzas/chicken-bacon-ranch.webp",
   hero: "/img/hero-pizza.webp",
+  fallback: FALLBACK_IMG,
 };
 
 const BENTO = {
@@ -114,6 +122,65 @@ const BENTO = {
   stromboli: "/img/bento/stromboli.webp",
   pinwheels: "/img/bento/pinwheels.webp",
   tiramisu: "/img/bento/tiramisu.webp",
+};
+
+/**
+ * Real product photography lifted from the legacy WordPress site. Each
+ * entry is a 1:1 match for the menu item it's used on — when we don't
+ * have a matching photo we still fall back to FALLBACK_IMG.
+ */
+const M = {
+  // Pizzas
+  supreme: "/img/menu/supreme.webp",
+  bbqChicken: "/img/menu/bbq-chicken.webp",
+  veggie: "/img/menu/veggie-pizza.webp",
+  grandmasSicilian: "/img/menu/grandmas-sicilian.webp",
+  tomatoBasil: "/img/menu/tomato-basil.webp",
+  meatLovers: "/img/menu/meat-lovers.webp",
+  lasagna: "/img/menu/lasagna-pizza.webp",
+  hawaiian: "/img/menu/hawaiian.webp",
+  chickenBaconRanch: "/img/menu/chicken-bacon-ranch.webp",
+  taco: "/img/menu/taco-pizza.webp",
+  caprese: "/img/menu/caprese.webp",
+  florentine: "/img/menu/florentine.webp",
+  sweetMeat: "/img/menu/sweet-meat.webp",
+  classicItalian: "/img/menu/classic-italian.webp",
+  whitePizza: "/img/menu/white-pizza.webp",
+  cheesePizza: "/img/menu/cheese-pizza.webp",
+  // Subs
+  phillyChicken: "/img/menu/philly-chicken.webp",
+  phillySteak: "/img/menu/philly-steak.webp",
+  phillySpecial: "/img/menu/philly-special.webp",
+  meatballParm: "/img/menu/meatball-parm.webp",
+  italianSub: "/img/menu/italian-sub.webp",
+  sausagePeppersSub: "/img/menu/sausage-peppers-sub.webp",
+  // Stromboli / calzone
+  meatStromboli: "/img/menu/meat-stromboli.webp",
+  veggieStromboli: "/img/menu/veggie-stromboli.webp",
+  calzone: "/img/menu/calzone.webp",
+  // Wings
+  wings: "/img/menu/wings.webp",
+  // Salads
+  pastaSalad: "/img/menu/pasta-salad.webp",
+  caesarSalad: "/img/menu/caesar-salad.webp",
+  houseSalad: "/img/menu/house-salad.webp",
+  greekSalad: "/img/menu/greek-salad.webp",
+  // Desserts
+  chocolateCannoli: "/img/menu/chocolate-cannoli.webp",
+  chocolateCake: "/img/menu/chocolate-cake.webp",
+  chocolateMousse: "/img/menu/chocolate-mousse.webp",
+  tiramisu: "/img/menu/tiramisu.webp",
+  gfBrownie: "/img/menu/gf-brownie.webp",
+  carrotCake: "/img/menu/carrot-cake.webp",
+  cheesecake: "/img/menu/cheesecake.webp",
+  cheesecakeChoc: "/img/menu/cheesecake-chocolate.webp",
+  // Catering / beverages
+  pinwheels: "/img/menu/pinwheels.webp",
+  doughBalls: "/img/menu/dough-balls.webp",
+  beerTaps: "/img/menu/beer-taps.webp",
+  beerCase: "/img/menu/beer-case.webp",
+  // Breakfast
+  breakfastSlice: "/img/breakfast/breakfast-slice.jpg",
 };
 
 const MENU: MenuData = {
@@ -193,7 +260,7 @@ const MENU: MenuData = {
           name: "Supreme",
           description:
             "Mushrooms, onions, green peppers, pepperoni, sausage, ham and ground beef.",
-          image: PIZZA_IMG.pepperoni,
+          image: M.supreme,
           badges: ["best-seller"],
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
@@ -202,7 +269,7 @@ const MENU: MenuData = {
           name: "BBQ Chicken",
           description:
             "Chicken breast, red onions, bacon and our BBQ pizza sauce blend.",
-          image: PIZZA_IMG.chickenBaconRanch,
+          image: M.bbqChicken,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
@@ -210,7 +277,7 @@ const MENU: MenuData = {
           name: "Veggie Pizza",
           description:
             "Fresh green peppers, onions, spinach, black olives, mushrooms, tomatoes and garlic.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: M.veggie,
           diet: ["vegetarian"],
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
@@ -219,7 +286,7 @@ const MENU: MenuData = {
           name: "Grandma’s Sicilian",
           description:
             "Thin crust Sicilian with fresh basil, garlic, tomatoes and marinara.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: M.grandmasSicilian,
           diet: ["vegetarian"],
           pizzaPrices: { sicilian: 21, onlyAvailableIn: ["sicilian"] },
           note: '16" square only',
@@ -229,7 +296,7 @@ const MENU: MenuData = {
           name: "Tomato Basil",
           description:
             "Garlic and oil base, fresh garlic, basil, tomatoes and mozzarella.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: M.tomatoBasil,
           diet: ["vegetarian"],
           badges: ["fan-favorite"],
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
@@ -238,7 +305,7 @@ const MENU: MenuData = {
           id: "meat-lovers",
           name: "Meat Lovers",
           description: "Sausage, pepperoni, ham and ground beef.",
-          image: PIZZA_IMG.pepperoni,
+          image: M.meatLovers,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
@@ -246,14 +313,14 @@ const MENU: MenuData = {
           name: "Lasagna Pizza",
           description:
             "Light marinara, ricotta, parmigiana, sausage, seasoned ground beef, topped with fresh basil.",
-          image: PIZZA_IMG.pepperoni,
+          image: M.lasagna,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
           id: "hawaiian",
           name: "Hawaiian",
           description: "Ham, pineapple and light pizza sauce.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: M.hawaiian,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
@@ -261,7 +328,7 @@ const MENU: MenuData = {
           name: "Chicken Bacon Ranch",
           description:
             "Chicken, bacon and mozzarella over a light ranch base, finished with a ranch drizzle.",
-          image: PIZZA_IMG.chickenBaconRanch,
+          image: M.chickenBaconRanch,
           badges: ["fan-favorite"],
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
@@ -270,7 +337,7 @@ const MENU: MenuData = {
           name: "Taco Pizza",
           description:
             "Seasoned ground beef, mozzarella & cheddar blend, light pizza sauce, topped with fresh lettuce, homemade pico, red onion and a sour cream drizzle.",
-          image: PIZZA_IMG.chickenBaconRanch,
+          image: M.taco,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
@@ -278,7 +345,7 @@ const MENU: MenuData = {
           name: "Buffalo Chicken",
           description:
             "Chopped breaded chicken, buffalo sauce, blue cheese crumble, mozzarella with ranch drizzle.",
-          image: PIZZA_IMG.chickenBaconRanch,
+          image: PIZZA_IMG.fallback,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
@@ -286,14 +353,14 @@ const MENU: MenuData = {
           name: "Caprese",
           description:
             "Grilled chicken, garlic, tomatoes, basil, pesto and balsamic reduction.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: M.caprese,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
           id: "florentine",
           name: "Florentine",
           description: "Spinach, ricotta, parmesan and garlic blend.",
-          image: PIZZA_IMG.white,
+          image: M.florentine,
           diet: ["vegetarian"],
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
@@ -302,7 +369,7 @@ const MENU: MenuData = {
           name: "Sweet Meat",
           description:
             "Ranch base with pineapple, ham, bacon, pepperoni, capicola and salami.",
-          image: PIZZA_IMG.pepperoni,
+          image: M.sweetMeat,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
@@ -310,14 +377,14 @@ const MENU: MenuData = {
           name: "Classic Italian",
           description:
             "Garlic & oil base, salami, pepperoni, red onion, ricotta cheese and fresh garlic.",
-          image: PIZZA_IMG.pepperoni,
+          image: M.classicItalian,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
           id: "white-pizza",
           name: "White Pizza",
           description: "Garlic & oil base, fresh garlic, ricotta and mozzarella.",
-          image: PIZZA_IMG.white,
+          image: M.whitePizza,
           diet: ["vegetarian"],
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
@@ -335,7 +402,7 @@ const MENU: MenuData = {
           name: "Cheese Pizza",
           description:
             "Our hand-tossed dough, house red sauce and mozzarella. Pick any size and stack on regular or premium toppings.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: M.cheesePizza,
           diet: ["vegetarian"],
           pizzaPrices: { large: 18, sicilian: 21, xlarge: 20, jumbo: 22, glutenFree: 12 },
         },
@@ -347,18 +414,28 @@ const MENU: MenuData = {
       tagline: "Served 9 AM – 11 AM",
       pricingNote: "LG $22 · XL $26 · GF/Cauli $16 — Breakfast Stromboli $12 · Pinwheels $5",
       featuredItemIds: [
+        "breakfast-slice",
         "strawberry-french-toast-pizza",
         "southwest-breakfast-pizza",
         "bacon-egg-cheese-pizza",
-        "meat-lovers-breakfast-pizza",
       ],
       items: [
+        {
+          id: "breakfast-slice",
+          name: "Breakfast Slice",
+          description:
+            "A single hand-cut slice of any breakfast pizza on the line. Grab-and-go and ready in minutes — see the cooler for today's cut.",
+          image: M.breakfastSlice,
+          badges: ["new"],
+          price: 5,
+          note: "By the slice — 9 AM to 11 AM",
+        },
         {
           id: "strawberry-french-toast-pizza",
           name: "Strawberry French Toast Pizza",
           description:
             "French toast custard, strawberry glaze, maple syrup, cinnamon, sugar and powdered sugar.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: PIZZA_IMG.fallback,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -367,7 +444,7 @@ const MENU: MenuData = {
           name: "Southwest Breakfast Pizza",
           description:
             "Egg, sausage, ham, onion, green peppers, pico de gallo and a sour cream drizzle.",
-          image: PIZZA_IMG.chickenBaconRanch,
+          image: PIZZA_IMG.fallback,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -375,7 +452,7 @@ const MENU: MenuData = {
           id: "raspberry-danish-pizza",
           name: "Raspberry Danish Pizza",
           description: "Cream cheese blend, sugar and raspberry glaze.",
-          image: PIZZA_IMG.white,
+          image: PIZZA_IMG.fallback,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -384,21 +461,21 @@ const MENU: MenuData = {
           name: "Meat Lovers Breakfast Pizza",
           description:
             "Egg, bacon, ham, sausage, pepperoni, mozzarella and cheddar jack cheese.",
-          image: PIZZA_IMG.pepperoni,
+          image: PIZZA_IMG.fallback,
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
         {
           id: "bacon-egg-cheese-pizza",
           name: "Bacon, Egg & Cheese Pizza",
           description: "Smoked bacon, fresh-cracked egg and melty mozzarella.",
-          image: PIZZA_IMG.chickenBaconRanch,
+          image: PIZZA_IMG.fallback,
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
         {
           id: "sausage-egg-cheese-pizza",
           name: "Sausage, Egg & Cheese Pizza",
           description: "Italian sausage, fresh-cracked egg and mozzarella.",
-          image: PIZZA_IMG.pepperoni,
+          image: PIZZA_IMG.fallback,
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
         {
@@ -429,7 +506,7 @@ const MENU: MenuData = {
           name: "Key Lime Pizza",
           description:
             "Key lime cream cheese blend, lime zest, sugar glaze with graham cracker crumble.",
-          image: PIZZA_IMG.white,
+          image: PIZZA_IMG.fallback,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -438,7 +515,7 @@ const MENU: MenuData = {
           name: "Strawberry Cheesecake Pizza",
           description:
             "Cream cheese blend, strawberry sugar glaze with graham cracker crumble.",
-          image: PIZZA_IMG.white,
+          image: PIZZA_IMG.fallback,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -455,28 +532,28 @@ const MENU: MenuData = {
           id: "philly-chicken",
           name: "Philly Chicken",
           description: "Grilled chicken, American cheese, sautéed onions and peppers.",
-          image: BENTO.philly,
+          image: M.phillyChicken,
           price: 12,
         },
         {
           id: "philly-steak",
           name: "Philly Steak",
           description: "Shaved steak and American cheese.",
-          image: BENTO.philly,
+          image: M.phillySteak,
           price: 12,
         },
         {
           id: "philly-steak-special",
           name: "Philly Steak Special",
           description: "Steak, sautéed onions, peppers, mushrooms and American cheese.",
-          image: BENTO.philly,
+          image: M.phillySpecial,
           price: 13,
         },
         {
           id: "meatball-parmesan",
           name: "Meatball Parmesan",
           description: "House meatballs, marinara sauce and mozzarella.",
-          image: BENTO.philly,
+          image: M.meatballParm,
           price: 11,
         },
         {
@@ -494,7 +571,7 @@ const MENU: MenuData = {
           name: "Italian Sub",
           description:
             "Ham, salami, capicola, provolone, lettuce, tomato, red onions and creamy Italian dressing.",
-          image: BENTO.philly,
+          image: M.italianSub,
           price: 11,
           note: "Served hot or cold",
         },
@@ -502,7 +579,7 @@ const MENU: MenuData = {
           id: "sausage-peppers-sub",
           name: "Sausage & Peppers Sub",
           description: "Mild Italian sausage, peppers and onions with marinara.",
-          image: BENTO.philly,
+          image: M.sausagePeppersSub,
           price: 12,
         },
       ],
@@ -518,7 +595,7 @@ const MENU: MenuData = {
           name: "Meat Lovers Stromboli",
           description:
             "Pepperoni, sausage, ham, capicola, salami and mozzarella with a side of marinara.",
-          image: BENTO.stromboli,
+          image: M.meatStromboli,
           sizes: [
             { size: "Small", price: 12 },
             { size: "Large", price: 16 },
@@ -529,7 +606,7 @@ const MENU: MenuData = {
           name: "Veggie Lovers Stromboli",
           description:
             "Peppers, mushrooms, spinach, onions, black olives, garlic and mozzarella with a side of marinara.",
-          image: BENTO.stromboli,
+          image: M.veggieStromboli,
           diet: ["vegetarian"],
           sizes: [
             { size: "Small", price: 12 },
@@ -541,7 +618,7 @@ const MENU: MenuData = {
           name: "Create Your Own Stromboli",
           description:
             "Mozzarella and parmesan cheeses with a side of marinara. Add toppings to make it yours.",
-          image: BENTO.stromboli,
+          image: M.meatStromboli,
           sizes: [
             { size: "Small", price: 10 },
             { size: "Large", price: 14 },
@@ -566,7 +643,7 @@ const MENU: MenuData = {
           name: "Meat Lovers Calzone",
           description:
             "Pepperoni, sausage, ham, capicola, salami, mozzarella, parmesan, ricotta and romano cheeses with a side of marinara.",
-          image: BENTO.stromboli,
+          image: M.calzone,
           sizes: [
             { size: "Small", price: 15 },
             { size: "Large", price: 20 },
@@ -577,7 +654,7 @@ const MENU: MenuData = {
           name: "Veggie Lovers Calzone",
           description:
             "Veggies, mozzarella, parmesan, ricotta and romano cheeses with a side of marinara.",
-          image: BENTO.stromboli,
+          image: M.calzone,
           diet: ["vegetarian"],
           sizes: [
             { size: "Small", price: 15 },
@@ -589,7 +666,7 @@ const MENU: MenuData = {
           name: "Create Your Own Calzone",
           description:
             "Mozzarella, parmesan, ricotta and romano cheeses with a side of marinara. Build it your way.",
-          image: BENTO.stromboli,
+          image: M.calzone,
           sizes: [
             { size: "Small", price: 12 },
             { size: "Large", price: 16 },
@@ -614,7 +691,7 @@ const MENU: MenuData = {
           name: "Boneless Wings",
           description:
             "Hand-breaded boneless wings, tossed in mild, medium, hot or barbecue. Upgrade to Mike's Hot Honey or Garlic Parm for the full DHOP treatment.",
-          image: BENTO.wings,
+          image: M.wings,
           badges: ["new"],
           counts: [
             { count: 6, price: 8 },
@@ -636,7 +713,7 @@ const MENU: MenuData = {
           name: "Bone-In Wings",
           description:
             "Classic bone-in wings, tossed in mild, medium, hot or barbecue.",
-          image: BENTO.wings,
+          image: M.wings,
           counts: [
             { count: 6, price: 10 },
             { count: 12, price: 16 },
@@ -665,7 +742,7 @@ const MENU: MenuData = {
           name: "Pasta Salad",
           description:
             "Rotini pasta, cucumbers, green peppers, onions and sundried tomatoes in our Italian dressing.",
-          image: BENTO.greekSalad,
+          image: M.pastaSalad,
           diet: ["vegetarian"],
           sizes: [
             { size: "Regular", price: 6 },
@@ -677,7 +754,7 @@ const MENU: MenuData = {
           name: "Caesar Salad",
           description:
             "Bed of romaine, shredded parmesan & romano cheeses, Caesar dressing. Make it a meal by adding our grilled chicken.",
-          image: BENTO.greekSalad,
+          image: M.caesarSalad,
           diet: ["vegetarian"],
           badges: ["fan-favorite"],
           layout: "wide",
@@ -692,7 +769,7 @@ const MENU: MenuData = {
           name: "House Salad",
           description:
             "Romaine, tomatoes, cucumbers, red onions, green peppers, shredded carrots and your choice of dressing. The everyday classic — pairs with any pizza.",
-          image: BENTO.houseSalad,
+          image: M.houseSalad,
           diet: ["vegetarian"],
           layout: "wide",
           sizes: [
@@ -706,7 +783,7 @@ const MENU: MenuData = {
           name: "Greek Salad",
           description:
             "Romaine, tomatoes, feta, olives, cucumbers, red onions, peppers, pepperoncini and Greek dressing.",
-          image: BENTO.greekSalad,
+          image: M.greekSalad,
           diet: ["vegetarian"],
           sizes: [
             { size: "Small", price: 6 },
@@ -727,32 +804,44 @@ const MENU: MenuData = {
         "carrot-cake",
       ],
       items: [
-        { id: "chocolate-dipped-cannoli", name: "Chocolate Dipped Cannoli", image: BENTO.tiramisu, price: 5 },
-        { id: "cannoli", name: "Cannoli", image: BENTO.tiramisu, price: 5 },
-        { id: "chocolate-cake", name: "Chocolate Cake", image: BENTO.tiramisu, price: 5 },
-        { id: "chocolate-mousse", name: "Chocolate Mousse", image: BENTO.tiramisu, price: 5 },
-        { id: "tiramisu", name: "Tiramisu", image: BENTO.tiramisu, price: 5, badges: ["fan-favorite"] },
-        { id: "gluten-free-brownie", name: "Gluten Free Brownie", image: BENTO.tiramisu, diet: ["gluten-free"], price: 5 },
-        { id: "carrot-cake", name: "Carrot Cake", description: "With cream cheese frosting.", image: BENTO.tiramisu, price: 5 },
-        { id: "ny-cheesecake", name: "NY Cheesecake", image: BENTO.tiramisu, price: 5 },
-        { id: "ny-cheesecake-choc", name: "NY Cheesecake (Chocolate Drizzle)", image: BENTO.tiramisu, price: 5 },
+        { id: "chocolate-dipped-cannoli", name: "Chocolate Dipped Cannoli", image: M.chocolateCannoli, price: 5 },
+        { id: "cannoli", name: "Cannoli", image: M.chocolateCannoli, price: 5 },
+        { id: "chocolate-cake", name: "Chocolate Cake", image: M.chocolateCake, price: 5 },
+        { id: "chocolate-mousse", name: "Chocolate Mousse", image: M.chocolateMousse, price: 5 },
+        { id: "tiramisu", name: "Tiramisu", image: M.tiramisu, price: 5, badges: ["fan-favorite"] },
+        { id: "gluten-free-brownie", name: "Gluten Free Brownie", image: M.gfBrownie, diet: ["gluten-free"], price: 5 },
+        { id: "carrot-cake", name: "Carrot Cake", description: "With cream cheese frosting.", image: M.carrotCake, price: 5 },
+        { id: "ny-cheesecake", name: "NY Cheesecake", image: M.cheesecake, price: 5 },
+        { id: "ny-cheesecake-choc", name: "NY Cheesecake (Chocolate Drizzle)", image: M.cheesecakeChoc, price: 5 },
       ],
     },
     {
       id: "beverages",
       name: "Beverages",
-      tagline: "Soft drinks, water and local craft beer",
-      featuredItemIds: ["canned-drinks", "bottled-drinks", "local-craft-beer"],
+      tagline: "Brewed Lavazza, soft drinks, water and local craft beer",
+      featuredItemIds: ["lavazza-brewed-coffee", "canned-drinks", "local-craft-beer"],
       items: [
-        { id: "canned-drinks", name: "Canned Drinks", image: BENTO.tiramisu, price: 2.25 },
-        { id: "bottled-drinks", name: "Bottled Drinks", image: BENTO.tiramisu, price: 3.5 },
-        { id: "bottled-water", name: "Bottled Water", image: BENTO.tiramisu, price: 2 },
+        {
+          id: "lavazza-brewed-coffee",
+          name: "Lavazza Brewed Coffee",
+          description:
+            "Freshly brewed Italian Lavazza — rich, smooth and a perfect pairing with our breakfast slices.",
+          image: FALLBACK_IMG,
+          badges: ["new"],
+          sizes: [
+            { size: "12 oz", price: 3 },
+            { size: "16 oz", price: 3.75 },
+          ],
+        },
+        { id: "canned-drinks", name: "Canned Drinks", image: FALLBACK_IMG, price: 2.25 },
+        { id: "bottled-drinks", name: "Bottled Drinks", image: FALLBACK_IMG, price: 3.5 },
+        { id: "bottled-water", name: "Bottled Water", image: FALLBACK_IMG, price: 2 },
         {
           id: "local-craft-beer",
           name: "Local Craft Beer",
           description:
             "A rotating selection of craft beers from local and regional Florida breweries — ask your server what's on this week.",
-          image: BENTO.tiramisu,
+          image: M.beerTaps,
           layout: "wide",
         },
         {
@@ -760,7 +849,7 @@ const MENU: MenuData = {
           name: "Canned Beer Selection",
           description:
             "Our cooler is stocked with a wide variety of popular beers.",
-          image: BENTO.tiramisu,
+          image: M.beerCase,
         },
       ],
     },
@@ -781,7 +870,7 @@ const MENU: MenuData = {
           id: "catering-greek-salad",
           name: "Greek, Caesar or House Salad (Catering)",
           description: "Our signature salads, scaled for a crowd.",
-          image: BENTO.greekSalad,
+          image: M.greekSalad,
           sizes: [
             { size: "Small", price: 45 },
             { size: "Large", price: 55 },
@@ -795,7 +884,7 @@ const MENU: MenuData = {
           id: "catering-pasta-salad",
           name: "Pasta Salad (Catering)",
           description: "Rotini, veggies and sundried tomatoes in Italian dressing.",
-          image: BENTO.greekSalad,
+          image: M.pastaSalad,
           sizes: [
             { size: "Small", price: 50 },
             { size: "Large", price: 80 },
@@ -810,7 +899,7 @@ const MENU: MenuData = {
           name: "Salad Dressings",
           description:
             "House dressings to go: balsamic vinaigrette, ranch, blue cheese, Greek, Caesar or creamy Italian.",
-          image: BENTO.greekSalad,
+          image: FALLBACK_IMG,
           sizes: [
             { size: "Pint", price: 12 },
             { size: "Quart", price: 6 },
@@ -820,7 +909,7 @@ const MENU: MenuData = {
           id: "pizza-dough-balls",
           name: "Pizza Dough Balls",
           description: "Our scratch-made vegan dough — 18 oz portions.",
-          image: PIZZA_IMG.white,
+          image: M.doughBalls,
           price: 5,
           note: "18 oz",
         },
@@ -828,7 +917,7 @@ const MENU: MenuData = {
           id: "marinara-sauce",
           name: "Marinara / Pizza Sauce",
           description: "Our house red, by the pint or quart.",
-          image: PIZZA_IMG.tomatoBasil,
+          image: FALLBACK_IMG,
           sizes: [
             { size: "Pint", price: 9 },
             { size: "Quart", price: 16 },
@@ -838,7 +927,7 @@ const MENU: MenuData = {
           id: "catering-pinwheels",
           name: "Pepperoni Pinwheels",
           description: "Hand-rolled, sliced and baked — pack of 8.",
-          image: BENTO.pinwheels,
+          image: M.pinwheels,
           price: 35,
           note: "Qty 8",
         },

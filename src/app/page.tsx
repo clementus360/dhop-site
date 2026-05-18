@@ -8,6 +8,7 @@ import { Faq } from "@/components/Faq";
 import { Mission } from "@/components/Mission";
 import { Testimonials } from "@/components/Testimonials";
 import { MoreThanPizza } from "@/components/MoreThanPizza";
+import { Catering } from "@/components/Catering";
 import { Partners } from "@/components/Partners";
 import { Location } from "@/components/Location";
 import { Footer } from "@/components/Footer";
@@ -25,6 +26,7 @@ export default function Home() {
       <Mission />
       <Testimonials />
       <MoreThanPizza />
+      <Catering />
       <Partners />
       <Location />
       <Footer />
