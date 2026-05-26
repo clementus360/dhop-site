@@ -10,6 +10,7 @@ import { Mission } from "@/components/Mission";
 import { Testimonials } from "@/components/Testimonials";
 import { MoreThanPizza } from "@/components/MoreThanPizza";
 import { Catering } from "@/components/Catering";
+import { Merch } from "@/components/Merch";
 import { Partners } from "@/components/Partners";
 import { Location } from "@/components/Location";
 import { Footer } from "@/components/Footer";
@@ -29,6 +30,7 @@ export default async function Home() {
       <Testimonials />
       <MoreThanPizza />
       <Catering />
+      <Merch />
       <Partners />
       <Location />
       <Footer />

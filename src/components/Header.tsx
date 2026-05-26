@@ -16,7 +16,7 @@ const PRIMARY_NAV: Array<{
   { label: "Breakfast", href: "/menu#breakfast-pizzas" },
   { label: "The DHOP Way", href: "/#dhop-way" },
   { label: "Catering", href: "/menu#catering" },
-  { label: "Merchandise", href: "/#merch" },
+  { label: "Merchandise", href: "/merch" },
 ];
 
 const MEGA_FEATURED_CATEGORIES = [
