@@ -183,6 +183,29 @@ const M = {
   breakfastSlice: "/img/breakfast/breakfast-slice.jpg",
 };
 
+/**
+ * 2026 web & social photoshoot — sharper, on-brand product photography
+ * that fills in the items still on FALLBACK_IMG and replaces a few
+ * inaccurate placeholders (e.g. the chicken parm sub was rendering a
+ * Philly cheesesteak photo).
+ */
+const D = {
+  buffaloChicken: "/img/DHOP 2026 Web and Social/Buffalo Chicken Menu.jpg",
+  strawberryFrenchToast: "/img/DHOP 2026 Web and Social/Strawberry French Toast Menu.jpg",
+  southwestBreakfast: "/img/DHOP 2026 Web and Social/Southwest Menu Pie.jpg",
+  raspberryDanish: "/img/DHOP 2026 Web and Social/Raspberry Cheese Danish Menu.jpg",
+  meatLoversBreakfast: "/img/DHOP 2026 Web and Social/Breakfast Meat Lovers Menu.jpg",
+  baconEggCheese: "/img/DHOP 2026 Web and Social/Bacon Egg and Cheese Zoomed side shot (menu).jpg",
+  sausageEggCheese: "/img/DHOP 2026 Web and Social/Sausage Egg and Cheese Menu.jpg",
+  keyLime: "/img/DHOP 2026 Web and Social/Keylime Menu .jpg",
+  strawberryCheesecake: "/img/DHOP 2026 Web and Social/Strawberry Cheesecake Side Shot.jpg",
+  lavazzaCoffee: "/img/DHOP 2026 Web and Social/Coffee on Stone.jpg",
+  chickenParm: "/img/DHOP 2026 Web and Social/Chicken Parm Menu.jpg",
+  breakfastStromboli: "/img/DHOP 2026 Web and Social/Breakfast Stromboli Menu.jpg",
+  baconPinwheel: "/img/DHOP 2026 Web and Social/Bacon Pinwheel (Best).jpg",
+  bonelessWings: "/img/DHOP 2026 Web and Social/Boneless For Menu.jpg",
+};
+
 const MENU: MenuData = {
   pizzaSizes: [
     { id: "large", label: 'Large', dims: '16"', cheesePrice: 18, addRegularTopping: 2.5, addPremiumTopping: 4 },
@@ -345,7 +368,7 @@ const MENU: MenuData = {
           name: "Buffalo Chicken",
           description:
             "Chopped breaded chicken, buffalo sauce, blue cheese crumble, mozzarella with ranch drizzle.",
-          image: PIZZA_IMG.fallback,
+          image: D.buffaloChicken,
           pizzaPrices: { large: 22, xlarge: 26, jumbo: 30, sicilian: 28, glutenFree: 16 },
         },
         {
@@ -435,7 +458,7 @@ const MENU: MenuData = {
           name: "Strawberry French Toast Pizza",
           description:
             "French toast custard, strawberry glaze, maple syrup, cinnamon, sugar and powdered sugar.",
-          image: PIZZA_IMG.fallback,
+          image: D.strawberryFrenchToast,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -444,7 +467,7 @@ const MENU: MenuData = {
           name: "Southwest Breakfast Pizza",
           description:
             "Egg, sausage, ham, onion, green peppers, pico de gallo and a sour cream drizzle.",
-          image: PIZZA_IMG.fallback,
+          image: D.southwestBreakfast,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -452,7 +475,7 @@ const MENU: MenuData = {
           id: "raspberry-danish-pizza",
           name: "Raspberry Danish Pizza",
           description: "Cream cheese blend, sugar and raspberry glaze.",
-          image: PIZZA_IMG.fallback,
+          image: D.raspberryDanish,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -461,35 +484,35 @@ const MENU: MenuData = {
           name: "Meat Lovers Breakfast Pizza",
           description:
             "Egg, bacon, ham, sausage, pepperoni, mozzarella and cheddar jack cheese.",
-          image: PIZZA_IMG.fallback,
+          image: D.meatLoversBreakfast,
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
         {
           id: "bacon-egg-cheese-pizza",
           name: "Bacon, Egg & Cheese Pizza",
           description: "Smoked bacon, fresh-cracked egg and melty mozzarella.",
-          image: PIZZA_IMG.fallback,
+          image: D.baconEggCheese,
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
         {
           id: "sausage-egg-cheese-pizza",
           name: "Sausage, Egg & Cheese Pizza",
           description: "Italian sausage, fresh-cracked egg and mozzarella.",
-          image: PIZZA_IMG.fallback,
+          image: D.sausageEggCheese,
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
         {
           id: "breakfast-stromboli",
           name: "Breakfast Stromboli",
           description: "Stuffed and baked — breakfast in a hand-held roll.",
-          image: BENTO.stromboli,
+          image: D.breakfastStromboli,
           price: 12,
         },
         {
           id: "breakfast-pinwheels",
           name: "Breakfast Pinwheels",
           description: "Sausage or bacon, rolled into our dough and sliced.",
-          image: BENTO.pinwheels,
+          image: D.baconPinwheel,
           price: 5,
         },
       ],
@@ -506,7 +529,7 @@ const MENU: MenuData = {
           name: "Key Lime Pizza",
           description:
             "Key lime cream cheese blend, lime zest, sugar glaze with graham cracker crumble.",
-          image: PIZZA_IMG.fallback,
+          image: D.keyLime,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -515,7 +538,7 @@ const MENU: MenuData = {
           name: "Strawberry Cheesecake Pizza",
           description:
             "Cream cheese blend, strawberry sugar glaze with graham cracker crumble.",
-          image: PIZZA_IMG.fallback,
+          image: D.strawberryCheesecake,
           badges: ["new"],
           pizzaPrices: { large: 22, xlarge: 26, glutenFree: 16 },
         },
@@ -561,7 +584,7 @@ const MENU: MenuData = {
           name: "Chicken Parm Sandwich",
           description:
             "Chopped breaded chicken, marinara sauce and mozzarella, all stacked on a 10\" Amoroso's roll. New on the menu and already a regular for the lunch crowd.",
-          image: BENTO.philly,
+          image: D.chickenParm,
           badges: ["new"],
           layout: "full",
           price: 13,
@@ -691,7 +714,7 @@ const MENU: MenuData = {
           name: "Boneless Wings",
           description:
             "Hand-breaded boneless wings, tossed in mild, medium, hot or barbecue. Upgrade to Mike's Hot Honey or Garlic Parm for the full DHOP treatment.",
-          image: M.wings,
+          image: D.bonelessWings,
           badges: ["new"],
           counts: [
             { count: 6, price: 8 },
@@ -826,7 +849,7 @@ const MENU: MenuData = {
           name: "Lavazza Brewed Coffee",
           description:
             "Freshly brewed Italian Lavazza — rich, smooth and a perfect pairing with our breakfast slices.",
-          image: FALLBACK_IMG,
+          image: D.lavazzaCoffee,
           badges: ["new"],
           sizes: [
             { size: "12 oz", price: 3 },
