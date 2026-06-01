@@ -44,7 +44,7 @@ export function MerchProductCard({ product }: { product: MerchProduct }) {
           </p>
         </div>
         <span className="inline-flex items-center gap-1 text-[12px] font-semibold uppercase tracking-wider text-brand">
-          View on Printify
+          View this Merchandise
           <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
         </span>
       </div>
